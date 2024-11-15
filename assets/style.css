@@ -1,0 +1,96 @@
+:root {
+    --text-color: #DBE4EF;
+    --card-front-color: #144480;
+    --card-back-color: #00F4BF;
+}
+body {
+    background: url('img/bg-desktop.webp');
+    font-family: Arial;
+}
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 4em;
+    gap: 3em;
+}
+.card {
+    margin: 1em 1em;
+    height: 20em;
+    flex-grow: 1;
+    flex-basis: calc(33% - 6em);
+}
+.card__content {
+    background-color: var(--card-front-color);
+    text-align: center;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 300ms ease-in-out;
+}
+.card__content__question p {
+    color: var(--text-color);
+    font-weight: 500;
+}
+.card__content__answer p {
+    color: var(--card-back-color);
+    font-weight: 700;
+}
+.card__content h3 {
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+    text-align: left;
+    padding: .5em;
+    position: absolute;
+    margin: .6em;
+    border-radius: .6em;
+    font-size: 1vw;
+    backface-visibility: hidden;
+}
+.card__content p {
+    padding: 2em;
+    margin-top: 2.8em;
+    font-size: 1.4vw;
+}
+.card.active .card__content {
+    transform: rotateY(180deg);
+}
+.card__content__question,
+.card__content__answer {
+    backface-visibility: hidden;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+.card__content__answer {
+    transform: rotateY(180deg);
+    background-color: rgba(0, 244, 191, .2);
+    border: 4px solid var(--card-back-color);
+}
+footer {
+    background-color: rgb(9, 8, 8);
+    color: whitesmoke;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+footer p {
+    font-size: .8em;
+    padding: 1em;
+}
+@media (max-width: 560px){
+    body {
+        background: url('img/bg-mobile.webp');
+    }
+    .card {
+        flex: 1 0 calc(100% - 1rem);
+    }
+    .card__content h3 {
+        font-size: 4vw;
+    }
+    .card__content p {
+        font-size: 20px;
+        margin-top: 2em;
+    }
+}
